@@ -19,6 +19,6 @@ Ext.define('SeptaMobi.store.Perks', {
 			noCache: false
 		},
 
-		autoLoad: true
+		autoLoad: false
 	}
 })

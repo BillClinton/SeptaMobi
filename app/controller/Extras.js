@@ -128,7 +128,12 @@ Ext.define('SeptaMobi.controller.Extras', {
 	showPerks: function(btn) {
 		var me = this,
 			extrasView = me.getExtrasNavView(),
-			perksView = me.getPerksView();
+			perksView = me.getPerksView(),
+    		perksStore = Ext.getStore('Perks');
+    
+		if(!perksStore.isLoaded()) {
+			perksStore.load();
+		}
 
 		me.showExtras(function() {
 			if(!perksView.hasParent()) {
