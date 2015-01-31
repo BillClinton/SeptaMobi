@@ -94,7 +94,7 @@ Ext.define('SeptaMobi.view.tripplanner.field.Component', {
                 cls: 'x-clear-icon',
                 html: '&times;'
             }]
-        },
+        }
     },
 
     initialize: function() {

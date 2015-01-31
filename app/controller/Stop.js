@@ -50,7 +50,7 @@ Ext.define('SeptaMobi.controller.Stop', {
 				autoCreate: true,
 
 				xtype: 'routedirections',
-				itemId: 'stop-routedirections',
+				itemId: 'stop-routedirections'
 			},			
 			routeTimeDetails: {
 				selector: 'stops-routetimedetails',
