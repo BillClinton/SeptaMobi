@@ -70,10 +70,12 @@ Ext.define('SeptaMobi.controller.TripPlanner', {
 				activate: 'onTripPlannerViewActivate'
 			},
 			fromField: {
-				tap: 'onAddressFieldTap'
+				tap: 'onAddressFieldTap',
+                clearicontap: 'onAddressFieldClearIconTap' 
 			},
 			toField: {
-				tap: 'onAddressFieldTap'
+				tap: 'onAddressFieldTap',
+                clearicontap: 'onAddressFieldClearIconTap' 
 			},
 			selectAddressField: {
 				keyup: 'onSelectAddressFieldKeyUp'
@@ -174,14 +176,22 @@ Ext.define('SeptaMobi.controller.TripPlanner', {
 	},
 
 	onAddressFieldTap: function(field) {
-		var me = this,
-			autocompleteAddressStore = Ext.getStore('AutocompleteAddress'),
-			selectAddressPanel = me.getSelectAddressPanel();
+        if (!field.isDisabled()) {
+            var me = this,
+                autocompleteAddressStore = Ext.getStore('AutocompleteAddress'),
+                selectAddressPanel = me.getSelectAddressPanel();
 
-		me.updateAutoCompleteAddress(field);
-		selectAddressPanel.setField(field);
-		selectAddressPanel.show();
+            me.updateAutoCompleteAddress(field);
+            selectAddressPanel.setField(field);
+            selectAddressPanel.show();
+        }
 	},
+
+    onAddressFieldClearIconTap: function(field) {
+        if (field.isDisabled()) {
+            field.enable()
+        }
+    },
 
 	onSelectAddressFieldKeyUp: Ext.Function.createBuffered(function(field) {
 		this.updateAutoCompleteAddress(field);
@@ -220,7 +230,7 @@ Ext.define('SeptaMobi.controller.TripPlanner', {
 		}
 
 		if (newValue) {
-			checkButton.addCls('x-button-pressed');
+			//checkButton.addCls('x-button-pressed');
 			otherCheckButton.removeCls('x-button-pressed');
 			textField.setValue('Current Location');
 			textField.disable();
