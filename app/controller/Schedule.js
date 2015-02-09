@@ -89,7 +89,7 @@ Ext.define('SeptaMobi.controller.Schedule', {
 	},
     
     onScheduleRouteListActivate: function(list, navView, oldActiveItem) {
-        if (typeof oldActiveItem != 'undefined') {
+        if (oldActiveItem) {
             this.pushPath('schedule');
 		    list.deselectAll();
         }
