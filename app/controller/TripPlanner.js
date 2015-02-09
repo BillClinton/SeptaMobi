@@ -175,17 +175,17 @@ Ext.define('SeptaMobi.controller.TripPlanner', {
 		this.pushPath('tripplanner');
 	},
 
-	onAddressFieldTap: function(field) {
-        if (!field.isDisabled()) {
-            var me = this,
-                autocompleteAddressStore = Ext.getStore('AutocompleteAddress'),
-                selectAddressPanel = me.getSelectAddressPanel();
+    onAddressFieldTap: function(field) {
+        if (field.isDisabled()) return;
 
-            me.updateAutoCompleteAddress(field);
-            selectAddressPanel.setField(field);
-            selectAddressPanel.show();
-        }
-	},
+        var me = this,
+            autocompleteAddressStore = Ext.getStore('AutocompleteAddress'),
+            selectAddressPanel = me.getSelectAddressPanel();
+
+        me.updateAutoCompleteAddress(field);
+        selectAddressPanel.setField(field);
+        selectAddressPanel.show();
+    },
 
     onAddressFieldClearIconTap: function(field) {
         if (field.isDisabled()) {
