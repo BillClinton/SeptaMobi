@@ -73,7 +73,6 @@ Ext.define('SeptaMobi.controller.Schedule', {
 	},
 
 	showSchedule: function() {
-        console.log('showSchedule');
 		var me = this,
 			mainTabView = me.getMainTabView(),
 			scheduleRoutesList = me.getScheduleRoutesList(),
