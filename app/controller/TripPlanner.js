@@ -176,7 +176,9 @@ Ext.define('SeptaMobi.controller.TripPlanner', {
 	},
 
     onAddressFieldTap: function(field) {
-        if (field.isDisabled()) return;
+        if (field.isDisabled()) { 
+            return; 
+        };
 
         var me = this,
             autocompleteAddressStore = Ext.getStore('AutocompleteAddress'),
