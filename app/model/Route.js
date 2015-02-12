@@ -10,7 +10,7 @@ Ext.define('SeptaMobi.model.Route', {
 		}, {
 			name: 'routeId',
 			mapping: 'route_id',
-			type: 'int'
+			type: 'string'
 		}, {
 			name: 'routeType',
 			mapping: 'route_type',
