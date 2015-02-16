@@ -162,9 +162,10 @@ Ext.define('SeptaMobi.controller.Schedule', {
 			routeDirections = me.getRouteDirections(),
 			stopDirectionsStore = Ext.getStore('StopDirections'),
 			stopDirectionsStoreProxy = stopDirectionsStore.getProxy(),
+            routeId = record.get('routeId'),
 			url;
 
-		this.pushPath('schedule/route/' + record.get('routeId'));
+		this.pushPath('schedule/route/' + routeId);
 
 		routeDirections.setMasked({
 			xtype: 'loadmask',
@@ -175,16 +176,30 @@ Ext.define('SeptaMobi.controller.Schedule', {
 
 		navView.push(routeDirections);
 
-		url = stopDirectionsStoreProxy.config.rootUrl + '/' + record.get('routeId') + '/directions/0/stops';
+        stopDirectionsStore.clearFilter(true);
 
-		stopDirectionsStoreProxy.setUrl(url);
+        if (!stopDirectionsStore.findRecord('routeId',routeId)) {
 
-		//TODO Store previously loaded routeId and only load if it is different or not loaded
-		stopDirectionsStore.load({
-			callback: function() {
-				routeDirections.setMasked(false);
-			}
-		});
+            url = stopDirectionsStoreProxy.config.rootUrl + '/' + routeId + '/directions/0/stops';
+
+            stopDirectionsStoreProxy.setUrl(url);
+
+            stopDirectionsStore.load({
+                addRecords : true,
+                callback: function(records) {
+                    Ext.each(records, function(rec) {
+                        rec.set('routeId',routeId);
+                    });
+                    stopDirectionsStore.filter('routeId',routeId);
+                    routeDirections.setMasked(false);
+                }
+            });
+        }
+        else
+        {
+            stopDirectionsStore.filter('routeId',routeId);
+            routeDirections.setMasked(false);
+        }
 	},
 
 	onRouteStopDetailsActivate: function(routeDetails) {

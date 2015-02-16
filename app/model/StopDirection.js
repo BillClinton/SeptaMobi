@@ -3,6 +3,9 @@ Ext.define('SeptaMobi.model.StopDirection', {
 
     config: {
         fields: [{
+			name: 'routeId',
+			type: 'string'
+		}, {
             name: 'name',
             type: 'string'
         }, {
