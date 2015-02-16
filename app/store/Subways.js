@@ -5,12 +5,16 @@ Ext.define('SeptaMobi.store.Subways', {
 	config: {
 		model: 'SeptaMobi.model.Route',
 		data: [{
-			id: 21442,
-            route_id: "12451",
+			//id: 21442,
+			id: 13890,
+            route_type_slug: 'subways',
+            route_id: "13890",
 			route_long_name: 'Broad Street Line'
 		}, {
-			id: 21442,
-            route_id: "12452",
+			//id: 21442,
+			id: 13891,
+            route_type_slug: 'subways',
+            route_id: "13891",
 			route_long_name: 'Market-Frankford Line'
 		}]
 	}
