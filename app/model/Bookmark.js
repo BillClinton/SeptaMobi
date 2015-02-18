@@ -29,7 +29,7 @@ Ext.define('SeptaMobi.model.Bookmark', {
 			}
 		}, {
 			name: 'stopId',
-			useNull: true,
+			allowNull: true,
 			type: 'int'
 		},{
 			name: 'name',
